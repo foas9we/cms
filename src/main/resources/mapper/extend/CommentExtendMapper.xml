@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.dao.extend.ICommentExtendMapper">
+    <resultMap id="CommentResultMap" type="com.briup.apps.bean.Comment">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="conment_time" jdbcType="BIGINT" property="commentTime" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="article_id" jdbcType="INTEGER" property="articleId" />
+        <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    </resultMap>
+    
+    <select id="selectByArticleId" parameterType="long" resultMap="CommentResultMap">
+        select *
+        from cms_comment
+        where article_id = #{article_id}
+    </select>
+</mapper>
